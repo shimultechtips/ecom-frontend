@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Layout from "../Layout";
 import { Link } from "react-router-dom";
 import {
   deletCartItem,
@@ -7,8 +6,9 @@ import {
   updateCartItems,
 } from "../../api/apiOrder";
 import { userInfo } from "../../utils/auth";
-import CartItem from "./CartItem";
 import { showError, showSuccess } from "../../utils/messages";
+import Layout from "../Layout";
+import CartItem from "./CartItem";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);

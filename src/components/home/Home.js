@@ -10,6 +10,7 @@ import { showError, showSuccess } from "../../utils/messages";
 import { prices } from "../../utils/prices";
 import Layout from "../Layout";
 import Card from "./Card";
+import Carousel from "./Carousel/Carousel";
 import CheckBox from "./CheckBox";
 import RadioBox from "./RadioBox";
 
@@ -153,63 +154,50 @@ const Home = () => {
           marginBottom: 10,
         }}
       >
-        <div className="row">
+        <div className=" pb-5">
+          <Carousel />
+        </div>
+        <div className="row gy-3">
           <div className="col-lg-3 col-md-6">
-            <div
-              style={{
-                padding: 10,
-                border: "1px solid #ced4da",
-                borderRadius: ".5rem",
-                marginBottom: 10,
-              }}
-            >
-              <h5>Filter By Categories: </h5>
-              <ul className="p-0">
-                <CheckBox
-                  handleFilters={(myFilters) =>
-                    handleFilters(myFilters, "category")
-                  }
-                  categories={categories}
-                />
-              </ul>
+            <div className="card shadow-sm border-0">
+              <div className="card-body">
+                <h5 className="card-title text-primary">
+                  Filter By Categories
+                </h5>
+                <ul className="list-unstyled mt-3 mb-0">
+                  <CheckBox
+                    handleFilters={(myFilters) =>
+                      handleFilters(myFilters, "category")
+                    }
+                    categories={categories}
+                  />
+                </ul>
+              </div>
             </div>
           </div>
 
           <div className="col-lg-5 col-md-6">
-            <div
-              style={{
-                padding: 10,
-                border: "1px solid #ced4da",
-                marginBottom: 10,
-                borderRadius: ".5rem",
-                minHeight: 165,
-              }}
-            >
-              <h5>Filter By Price :</h5>
-              <div className="row">
-                <RadioBox
-                  prices={prices}
-                  handleFilters={(myFilters) =>
-                    handleFilters(myFilters, "price")
-                  }
-                />
+            <div className="card shadow-sm border-0">
+              <div className="card-body">
+                <h5 className="card-title text-primary">Filter By Price</h5>
+                <div className="row mt-3">
+                  <RadioBox
+                    prices={prices}
+                    handleFilters={(myFilters) =>
+                      handleFilters(myFilters, "price")
+                    }
+                  />
+                </div>
               </div>
             </div>
           </div>
 
           <div className="col-lg-2 col-md-6">
-            <div
-              style={{
-                padding: 10,
-                border: "1px solid #ced4da",
-                marginBottom: 10,
-                borderRadius: ".5rem",
-              }}
-            >
-              <h5>Order :</h5>
-              <div>
+            <div className="card shadow-sm border-0">
+              <div className="card-body">
+                <h5 className="card-title text-primary">Order</h5>
                 <select
-                  className="form-select"
+                  className="form-select mt-3"
                   value={order}
                   onChange={handleChangeOrder}
                 >
@@ -221,17 +209,11 @@ const Home = () => {
           </div>
 
           <div className="col-lg-2 col-md-6">
-            <div
-              style={{
-                padding: 10,
-                border: "1px solid #ced4da",
-                borderRadius: ".5rem",
-              }}
-            >
-              <h5>Sort By :</h5>
-              <div>
+            <div className="card shadow-sm border-0">
+              <div className="card-body">
+                <h5 className="card-title text-primary">Sort By</h5>
                 <select
-                  className="form-select"
+                  className="form-select mt-3"
                   value={sortBy}
                   onChange={handleChangeSortBy}
                 >

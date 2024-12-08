@@ -21,7 +21,7 @@ const Menu = () => {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            MyApp
+            E-Commerce App
           </Link>
           <button
             className="navbar-toggler d-lg-none"

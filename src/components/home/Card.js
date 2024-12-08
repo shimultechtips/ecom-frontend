@@ -3,23 +3,15 @@ import { Link } from "react-router-dom";
 import { API } from "../../utils/config";
 
 const Card = ({ product, handleAddToCart }) => {
-  const titleStyle = {
-    display: "block",
-    textOverflow: "ellipsis",
-    wordWrap: "break-word",
-    overflow: "hidden",
-    maxHeight: "2em",
-    lineHeight: "1em",
-  };
   const imgStyle = {
-    height: 250,
+    height: "250px",
     objectFit: "cover",
-    objectPosition: "0px 0px",
+    borderRadius: "0.5rem 0.5rem 0 0",
   };
 
   return (
-    <div className="col-md-6 col-xs-12 col-lg-4 col-xl-3 mb-3">
-      <div className="card">
+    <div className="col-md-6 col-xs-12 col-lg-4 col-xl-3 mb-4">
+      <div className="card shadow-sm h-100">
         {product && product._id ? (
           <img
             src={`${API}/product/photo/${product._id}`}
@@ -28,61 +20,67 @@ const Card = ({ product, handleAddToCart }) => {
             className="card-img-top"
           />
         ) : (
-          ""
+          <div
+            style={{
+              height: "250px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "#f8f9fa",
+              borderRadius: "0.5rem 0.5rem 0 0",
+            }}
+          >
+            <span>No Image Available</span>
+          </div>
         )}
 
-        <div className="card-body">
-          <div style={{ minHeight: "3em" }}>
-            <p style={titleStyle}>{product.name}</p>
-          </div>
-          <p>
-            <span>
-              <b>Price : </b>&#2547;&nbsp;
-            </span>
-            {product.price}
+        <div className="card-body d-flex flex-column">
+          <h5
+            className="card-title text-truncate"
+            title={product.name}
+            style={{ minHeight: "3rem" }}
+          >
+            {product.name}
+          </h5>
+          <p className="mb-1">
+            <strong>Price:</strong> &#2547; {product.price}
           </p>
-          <p>
-            {product.quantity ? (
-              <span className="badge rounded-pill bg-primary">In Stock</span>
+          <p className="mb-1">
+            {product.quantity > 0 ? (
+              <span className="badge bg-success">In Stock</span>
             ) : (
-              <span className="badge rounded-pill bg-danger">Out of Stock</span>
+              <span className="badge bg-danger">Out of Stock</span>
             )}
           </p>
-          <p>
-            <b>Sold : </b>
-            <span>{product.sold} Items Sold.</span>
+          <p className="mb-1">
+            <strong>Sold:</strong> {product.sold} Items
           </p>
-          <p>
-            <b>Category : </b>
-            <span>{product.category.name}</span>
+          <p className="mb-1">
+            <strong>Category:</strong>{" "}
+            {product.category.name || "Uncategorized"}
           </p>
-          <p>
-            <b>Rating : </b>
-            <span>
-              {product.total_rating !== 0 && product.total_rating !== undefined
-                ? product.total_rating.toFixed(2) + " Out Of 5.00."
-                : "Not Rated Yet!"}
-            </span>
+          <p className="mb-3">
+            <strong>Rating:</strong>{" "}
+            {product.total_rating !== 0 && product.total_rating !== undefined
+              ? `${product.total_rating.toFixed(2)} / 5`
+              : "Not Rated Yet"}
           </p>
 
-          <Link to={`/product/${product._id}`}>
-            <button className="btn btn-outline-warning btn-sm m-2">
-              View Product
-            </button>
-          </Link>
-          {product.quantity ? (
-            <>
-              &nbsp;
+          <div className="mt-auto">
+            <Link to={`/product/${product._id}`}>
+              <button className="btn btn-warning btn-sm w-100 mb-2">
+                View Product
+              </button>
+            </Link>
+            {product.quantity > 0 && (
               <button
                 onClick={handleAddToCart}
-                className="btn btn-outline-primary btn-sm m-2"
+                className="btn btn-primary btn-sm w-100"
               >
                 Add to Cart
               </button>
-            </>
-          ) : (
-            ""
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 const Fail = () => {
   useEffect(() => {
     setTimeout(() => {
-      window.location = "https://ecom-frontend-steel.vercel.app/user/dashboard";
+      window.location = "http://localhost:3000/user/dashboard";
     }, 3000);
   }, []);
 
@@ -20,7 +20,7 @@ const Fail = () => {
           padding: "10px",
           fontWeight: "bold",
         }}
-        href="https://ecom-frontend-steel.vercel.app/user/dashboard"
+        href="http://localhost:3000/user/dashboard"
       >
         Go Back To Dashboard
       </a>
