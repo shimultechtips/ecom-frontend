@@ -1,17 +1,17 @@
-import { useState, useEffect } from "react";
-import Layout from "../Layout";
-import Card from "./Card";
-import { showError, showSuccess } from "../../utils/messages";
+import { useEffect, useState } from "react";
+import { addToCart } from "../../api/apiOrder";
 import {
   getCategories,
-  getProducts,
   getFilteredProducts,
+  getProducts,
 } from "../../api/apiProduct";
+import { isAuthenticated, userInfo } from "../../utils/auth";
+import { showError, showSuccess } from "../../utils/messages";
+import { prices } from "../../utils/prices";
+import Layout from "../Layout";
+import Card from "./Card";
 import CheckBox from "./CheckBox";
 import RadioBox from "./RadioBox";
-import { prices } from "../../utils/prices";
-import { isAuthenticated, userInfo } from "../../utils/auth";
-import { addToCart } from "../../api/apiOrder";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
